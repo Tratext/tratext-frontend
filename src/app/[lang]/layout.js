@@ -1,8 +1,8 @@
+export const revalidate = 3600 * 6;
 import "./globals.css";
 import Header from "@/components/global-layout/Header";
 import Footer from "@/components/global-layout/Footer";
-import { fetchGlobalData } from "@/lib/api";
-import { languages } from "@/config/languages";
+import { fetchGlobalData, fetchLocales } from "@/lib/api";
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -15,13 +15,15 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  return languages.map((lang) => ({ lang: lang.code }));
+  const locales = await fetchLocales();
+  return locales.map((locale) => ({ lang: locale.code }));
 }
 
 export default async function RootLayout({ children, params }) {
   const { lang } = await params;
-  const languageConfig =
-    languages.find((language) => language.code === lang) || {};
+  const languageConfig = await fetchLocales().then(
+    (locales) => locales.find((language) => language.code === lang) || {}
+  );
   const direction = languageConfig.dir || "ltr";
   const globalData = await fetchGlobalData(lang);
 

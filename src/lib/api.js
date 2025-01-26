@@ -14,11 +14,56 @@ const axiosInstance = axios.create({
 });
 
 export const fetchLocales = async () => {
-  const { data } = await axiosInstance.get("/i18n/locales");
-  return data;
-};
+  try {
+    const { data } = await axiosInstance.get("/i18n/locales")
+    return data
+  } catch (error) {
+    console.error("Error fetching locales:", error)
+    return []
+  }
+}
+
+export const fetchPagesForLanguage = async (locale) => {
+  try {
+    const { data } = await axiosInstance.get(`/pages?locale=${locale}&fields[0]=slug&pagination[page]=1&pagination[pageSize]=5`)
+    if (!data || !data.data || !Array.isArray(data.data)) {
+      console.error(`Unexpected data structure for locale ${locale}:`, data)
+      return []
+    }
+    return data.data
+      .map((page) => {
+        if (!page || !page.slug) {
+          console.error(`Invalid page data for locale ${locale}:`, page)
+          return null
+        }
+        return { slug: page.slug, locale }
+      })
+      .filter(Boolean)
+  } catch (error) {
+    console.error(`Error fetching pages for language ${locale}:`, error)
+    return []
+  }
+}
+
+export const fetchAllPages = async () => {
+  try {
+    const locales = await fetchLocales()
+    if (!locales || !Array.isArray(locales)) {
+      console.error("Invalid locales data:", locales)
+      return []
+    }
+    const allPagesPromises = locales.map((locale) => fetchPagesForLanguage(locale.code))
+    const pagesPerLocale = await Promise.all(allPagesPromises)
+    return pagesPerLocale.flat()
+  } catch (error) {
+    console.error("Error fetching all pages:", error)
+    return []
+  }
+}
+
 
 export const fetchGlobalData = async (locale = "en") => {
+  console.log("Global Data - ", locale);
   try {
     const { data } = await axiosInstance.get(
       `/global?locale=${locale}&status=published&pLevel`
@@ -35,6 +80,7 @@ export const fetchGlobalData = async (locale = "en") => {
 };
 
 export const fetchPageData = async (slug = "home", locale = "en") => {
+  console.log("Page Data - ", locale, " - ", slug);
   try {
     const { data } = await axiosInstance.get(
       `/pages?filters[slug][$eq]=${slug}&locale=${locale}&status=published&pLevel`
