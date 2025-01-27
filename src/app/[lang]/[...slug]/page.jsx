@@ -1,8 +1,8 @@
+export const revalidate = 21600; //3600 * 6;
 import { notFound } from "next/navigation";
 import ComponentRenderer from "@/components/ComponentRenderer";
 import { fetchPageData, fetchAllPages } from "@/lib/api";
 
-export const revalidate = 3600 * 6;
 
 export async function generateStaticParams() {
   const pages = await fetchAllPages();
