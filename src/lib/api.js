@@ -25,7 +25,7 @@ export const fetchLocales = async () => {
 
 export const fetchPagesForLanguage = async (locale) => {
   try {
-    const { data } = await axiosInstance.get(`/pages?locale=${locale}&fields[0]=slug&pagination[page]=1&pagination[pageSize]=5`)
+    const { data } = await axiosInstance.get(`/pages?locale=${locale}&fields[0]=slug&pagination[page]=1&pagination[pageSize]=25`)
     if (!data || !data.data || !Array.isArray(data.data)) {
       console.error(`Unexpected data structure for locale ${locale}:`, data)
       return []
