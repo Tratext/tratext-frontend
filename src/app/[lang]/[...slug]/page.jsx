@@ -1,4 +1,4 @@
-export const revalidate = 21600; //3600 * 6;
+// export const revalidate = 21600; //3600 * 6;
 import { notFound } from "next/navigation";
 import ComponentRenderer from "@/components/ComponentRenderer";
 import { fetchPageData, fetchAllPages } from "@/lib/api";

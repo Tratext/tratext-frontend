@@ -4,6 +4,11 @@ import { languages, defaultLanguage } from "@/config/languages";
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
+  // If the pathname starts with /api, skip the locale redirection logic
+  if (pathname.startsWith('/api')) {
+    return NextResponse.next(); // Skip locale check for API routes
+  }
+
   // Check if the pathname is missing a locale
   const pathnameIsMissingLocale = languages.every(
     (lang) => !pathname.startsWith(`/${lang.code}/`) && pathname !== `/${lang.code}`

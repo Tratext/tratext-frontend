@@ -1,4 +1,4 @@
-export const revalidate = 21600; //3600 * 6;
+// export const revalidate = 21600; //3600 * 6;
 import "./globals.css";
 import Header from "@/components/global-layout/Header";
 import Footer from "@/components/global-layout/Footer";

@@ -1,4 +1,4 @@
-export const revalidate = 21600; //3600 * 6;
+// export const revalidate = 21600; //3600 * 6;
 import { fetchPageData } from "@/lib/api";
 import ComponentRenderer from "@/components/ComponentRenderer";
 
