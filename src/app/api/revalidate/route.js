@@ -29,7 +29,7 @@ export async function POST(req) {
       const { locale, slug } = entry;
 
       if (locale && slug) {
-        const path = `${locale}/${slug}`;
+        const path = `/${locale}/${slug}`;
 
         console.log("waiting for revalidation", path);
         await revalidatePath(path);
