@@ -37,8 +37,8 @@ function LanguageSelector() {
   const changeLanguage = (langCode) => {
     const currentPath = navigator.replace(`/${selectedLanguage}`, "");
     Cookies.set("lang", langCode, { path: "/" });
-    router.push(`/${langCode}${currentPath}`);
     setIsOpen(false);
+    window.location.href = `/${langCode}${currentPath}`;
   };
 
   const selectedLanguageObj =

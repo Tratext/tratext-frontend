@@ -34,7 +34,7 @@ const componentsMap = {
   "components.why-choose": WhyChoose,
 };
 function ComponentRenderer({ components }) {
-  return components.map((componentData, key) => {
+  return components?.map((componentData, key) => {
     const { shared_component } = componentData;
     const component = shared_component?.shared_component?.[0] || componentData;
     const Component = componentsMap[component.__component];
@@ -42,6 +42,7 @@ function ComponentRenderer({ components }) {
       // console.warn(`Component for ${component.__component} not found.`);
       return null;
     }
+    // return <span>{component.__component}</span>;
     return <Component key={key} {...component} />;
   });
 }

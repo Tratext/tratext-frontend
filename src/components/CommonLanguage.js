@@ -13,7 +13,7 @@ function CommonLanguage({ title, country, view_all }) {
           </h1>
         </div>
         <div className="w-full flex justify-evenly items-center flex-wrap gap-4 sm:gap-8">
-          {country.map((language, i) => {
+          {country?.map((language, i) => {
             return (
               <Link
                 key={i}

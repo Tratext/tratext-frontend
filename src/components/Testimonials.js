@@ -16,7 +16,7 @@ function Testimonials({ testimonials }) {
   const sliderRef = useRef(null);
 
   const settings = {
-    infinite: testimonials.length > 1,
+    infinite: testimonials?.length > 1,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,

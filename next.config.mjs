@@ -10,11 +10,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "exciting-prize-f671089f83.media.strapiapp.com",
+        hostname: "ostorage.tratext.com",
         pathname: "/**",
       },
     ],
-    domains: ["tratext.de"],
+    domains: ["tratext.com"],
   },
 };
 

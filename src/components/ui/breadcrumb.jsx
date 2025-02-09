@@ -106,10 +106,10 @@ const BreadCrumbComponent = () => {
             <Link href="/">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
-        {segments.length > 0 && <BreadcrumbSeparator />}
+        {segments?.length > 0 && <BreadcrumbSeparator />}
         {breadcrumbItems.map((item, index) => (
           <BreadcrumbItem key={item.href}>
-            {index === breadcrumbItems.length - 1 ? (
+            {index === breadcrumbItems?.length - 1 ? (
               <BreadcrumbPage>{item.label}</BreadcrumbPage>
             ) : (
               <>

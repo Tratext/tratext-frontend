@@ -63,7 +63,7 @@ function Header({ header, direction }) {
                           >
                             {item.text}
                           </Link>
-                          {item.sub_menu.length > 0 && (
+                          {item.sub_menu?.length > 0 && (
                             // <div className="hidden group-hover:flex flex-col justify-center items-start    bg-white shadow-lg absolute top-full  left-0 py-4 border rounded z-10 ">
                             <div className="hidden group-hover:flex flex-col justify-center items-start    bg-white shadow-lg absolute top-full  left-0 py-4 border rounded z-10 ">
                               {item.sub_menu.map((menu, j) => (
@@ -80,7 +80,7 @@ function Header({ header, direction }) {
                                       {menu.text}
                                     </span>
                                   </Link>
-                                  {menu.sub_sub_menu.length > 0 && (
+                                  {menu.sub_sub_menu?.length > 0 && (
                                     <div className="flex flex-wrap bg-gray-50">
                                       {menu.sub_sub_menu.map((sub_menu, k) => (
                                         <Link
@@ -126,12 +126,12 @@ function Header({ header, direction }) {
                       <StrapiImage image={item.icon} width={14} height={15} />
                     </span>
                     {item.text}
-                    {item.sub_menu.length > 0 && (
+                    {item.sub_menu?.length > 0 && (
                       <IoIosArrowDown className="ml-1 text-[14px]" />
                     )}
                   </p>
                 </Link>
-                {item.sub_menu.length > 0 && (
+                {item.sub_menu?.length > 0 && (
                   // <div className="hidden group-hover:flex flex-col justify-center items-start  w-[200px] bg-white shadow-lg absolute top-full  left-0 py-4 border rounded z-10 ">
                   <div
                     className={`hidden group-hover:flex flex-wrap  w-[450px] bg-white shadow-lg absolute top-full  ${
@@ -142,7 +142,7 @@ function Header({ header, direction }) {
                       <div
                         key={j}
                         className={`w-1/2 flex flex-col px-1 ${
-                          menu.sub_sub_menu.length > 0 ? "" : ""
+                          menu.sub_sub_menu?.length > 0 ? "" : ""
                         }`}
                       >
                         <Link
@@ -161,7 +161,7 @@ function Header({ header, direction }) {
                             {menu.text}
                           </span>
                         </Link>
-                        {menu.sub_sub_menu.length > 0 && (
+                        {menu.sub_sub_menu?.length > 0 && (
                           <div className="flex flex-wrap">
                             {menu.sub_sub_menu.map((sub_menu, k) => (
                               <Link

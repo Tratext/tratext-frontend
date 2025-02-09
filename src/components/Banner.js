@@ -170,7 +170,7 @@ const SocialMediaBanner = ({ socials, description, title }) => (
               {description}
             </p>
             <div className="max-w-250px mx-auto flex justify-center items-center gap-4">
-              {socials.map((icon, i) => {
+              {socials?.map((icon, i) => {
                 return (
                   <Link
                     href=""

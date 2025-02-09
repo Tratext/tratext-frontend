@@ -15,7 +15,7 @@ function FAQS({ title, faqs, cta_button }) {
   const ref = useRef(null);
   const Inview = useInView(ref, { once: true });
 
-  const halfIndex = Math.ceil(faqs.length / 2);
+  const halfIndex = Math.ceil(faqs?.length / 2);
   const firstHalf = faqs.slice(0, halfIndex);
   const secondHalf = faqs.slice(halfIndex);
   return (
@@ -80,9 +80,9 @@ function FAQS({ title, faqs, cta_button }) {
           <div className="w-full flex flex-col overflow-hidden transition-all duration-300 gap-4">
             {secondHalf.map((faq, index) => (
               <motion.div
-                key={index + firstHalf.length}
+                key={index + firstHalf?.length}
                 className={`max-w-[100%] p-4 border-[1px] rounded-lg overflow-hidden ${
-                  activeIndex === index + firstHalf.length
+                  activeIndex === index + firstHalf?.length
                     ? "border-green-500"
                     : "border-gray-300"
                 }`}
@@ -91,9 +91,9 @@ function FAQS({ title, faqs, cta_button }) {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
                 <div
-                  onClick={() => toggleAnswer(index + firstHalf.length)}
+                  onClick={() => toggleAnswer(index + firstHalf?.length)}
                   className={`w-full flex justify-between items-center transition-all duration-500 py-2 ${
-                    activeIndex === index + firstHalf.length
+                    activeIndex === index + firstHalf?.length
                       ? "border-green-500 border-b-[1px]"
                       : ""
                   }`}
@@ -115,9 +115,9 @@ function FAQS({ title, faqs, cta_button }) {
                 </div>
 
                 <AnimatePresence>
-                  {activeIndex === index + firstHalf.length && (
+                  {activeIndex === index + firstHalf?.length && (
                     <motion.div
-                      key={`answer-${index + firstHalf.length}`}
+                      key={`answer-${index + firstHalf?.length}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

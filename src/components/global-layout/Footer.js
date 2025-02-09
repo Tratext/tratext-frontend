@@ -63,7 +63,7 @@ function Footer({ footer }) {
                         <span className="text-[14px] xl:text-[16px]">
                           {subItem.text}
                         </span>
-                        {k < item.link.length - 1 && (
+                        {k < item.link?.length - 1 && (
                           <span className="mx-1">or</span>
                         )}
                       </a>

@@ -90,7 +90,7 @@ const ContactInformation = ({
             </h3>
 
             <div className="w-full mx-auto flex flex-col justify-center items-center gap-2">
-              {email_addresses.map((email, i) => {
+              {email_addresses?.map((email, i) => {
                 return (
                   <div
                     key={i}

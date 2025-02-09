@@ -61,7 +61,7 @@ function CertifiedTranslationSlider() {
             onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
             className="flex justify-center items-center text-center max-w-[1100px] w-full"
           >
-            {CertifiedTranslation.map((translation, i) => (
+            {CertifiedTranslation?.map((translation, i) => (
               <SwiperSlide key={i} className="w-full bg-white rounded-2xl">
                 <div className="flex flex-col md:flex-row justify-between items-center w-full p-6 gap-6 cursor-pointer">
                   <div className="basis-[60%] max-w-[600px] flex flex-col gap-4 items-start">
@@ -100,7 +100,7 @@ function CertifiedTranslationSlider() {
           </div>
         </div>
         <div className="md:hidden w-full flex justify-center items-center gap-2 p-2 h-8">
-          {CertifiedTranslation.map((_, i) => (
+          {CertifiedTranslation?.map((_, i) => (
             <AnimatePresence key={i} mode="wait">
               {currentIndex === i ? (
                 <div
