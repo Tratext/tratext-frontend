@@ -128,6 +128,46 @@ function Footer({ footer }) {
             )}
           </div>
         </div>
+        <div className="max-w-[1100px] w-full lg:mx-auto flex">
+          <div className="w-full flex justify-end">
+            <a
+              href={`${
+                footer?.top_footer?.app_icons?.apple?.url
+                  ? footer?.top_footer?.app_icons?.apple?.url
+                  : "#"
+              }`}
+              className="w-fit"
+            >
+              <img
+                className="w-full max-w-10"
+                src={`${
+                  footer?.top_footer?.app_icons?.apple?.icon
+                    ? footer?.top_footer?.app_icons?.apple?.icon
+                    : "/app-store.png"
+                }`}
+                alt="App Store Icon"
+              />
+            </a>
+            <a
+              href={`${
+                footer?.top_footer?.app_icons?.android?.url
+                  ? footer?.top_footer?.app_icons?.android?.url
+                  : "#"
+              }`}
+              className="w-fit ml-4"
+            >
+              <img
+                className="w-full max-w-10"
+                src={`${
+                  footer?.top_footer?.app_icons?.android?.icon
+                    ? footer?.top_footer?.app_icons?.android?.icon
+                    : "/apps.png"
+                }`}
+                alt="Play Store Icon"
+              />
+            </a>
+          </div>
+        </div>
         <FooterSlider social={social} />
       </div>
     </div>

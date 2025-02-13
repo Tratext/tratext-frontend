@@ -55,7 +55,7 @@ const sliderSettings = {
 
 function FooterSlider({ social }) {
   return (
-    <div className="max-w-[1100px] lg:mx-auto md:px-6 bg-[#181d24] md:rounded-lg py-3 my-3 md:mb-10 overflow-hidden">
+    <div className="max-w-[1100px] lg:mx-auto md:px-6 bg-[#181d24] md:rounded-lg py-3 my-5 md:mb-10 overflow-hidden">
       <Slider {...sliderSettings} className="w-auto">
         {social.map((item, i) => (
           <div key={i} className="flex justify-center items-center ml-2">
