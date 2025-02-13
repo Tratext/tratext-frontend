@@ -42,7 +42,7 @@ function Footer({ footer }) {
             <Link href={logo.url}>
               <StrapiImage image={logo.image} className="!max-w-[250px]" />
             </Link>
-            {contact_block.map((block, i) => (
+            {contact_block?.map((block, i) => (
               <div
                 key={i}
                 className="flex justify-start items-start gap-2 flex-col"
@@ -50,7 +50,7 @@ function Footer({ footer }) {
                 <h3 className="xl:text-[20px] text-[18px] text-white font-semibold">
                   {block.title}:
                 </h3>
-                {block.list.map((item, j) => (
+                {block?.list?.map((item, j) => (
                   <div
                     key={j}
                     className="flex justify-center items-start gap-2"
@@ -58,7 +58,7 @@ function Footer({ footer }) {
                     <span className="min-w-[100px] text-gray-500 text-[14px] xl:text-[16px]">
                       {item.title}
                     </span>
-                    {item.link.map((subItem, k) => (
+                    {item?.link?.map((subItem, k) => (
                       <a href={subItem.url} key={k}>
                         <span className="text-[14px] xl:text-[16px]">
                           {subItem.text}
@@ -76,7 +76,7 @@ function Footer({ footer }) {
           <div className="basis-[57%]">
             {isMobile ? (
               <>
-                {links_block.map((block, i) => (
+                {links_block?.map((block, i) => (
                   <FooterDropDownSection
                     key={i}
                     title={block.title}
@@ -84,7 +84,7 @@ function Footer({ footer }) {
                   />
                 ))}
                 <div className="w-full flex justify-between items-center gap-3 sm:gap-6 py-6">
-                  {logos.map((l, i) => (
+                  {logos?.map((l, i) => (
                     <a href={l.url} key={i}>
                       <StrapiImage
                         image={l.image}
@@ -100,12 +100,12 @@ function Footer({ footer }) {
             ) : (
               <div className="w-full rounded-lg p-8 bg-[#181d24] flex flex-col">
                 <div className="w-full flex flex-col sm:flex-row justify-between gap-14">
-                  {links_block.map((item, i) => (
+                  {links_block?.map((item, i) => (
                     <div className="w-full flex flex-col gap-3" key={i}>
                       <h3 className="text-white text-[18px] xl:text-[20px] font-semibold">
                         {item.title}
                       </h3>
-                      {item.link.map((link, j) => (
+                      {item?.link?.map((link, j) => (
                         <Link
                           href={link.url}
                           key={j}
@@ -118,7 +118,7 @@ function Footer({ footer }) {
                   ))}
                 </div>
                 <div className="w-full flex justify-end gap-3 items-center  sm:gap-16 ">
-                  {logos.map((l, i) => (
+                  {logos?.map((l, i) => (
                     <a href={l.url} key={i}>
                       <StrapiImage image={l.image} className="!w-auto !h-10" />
                     </a>

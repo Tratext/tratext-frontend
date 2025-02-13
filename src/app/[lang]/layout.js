@@ -35,7 +35,7 @@ export default async function RootLayout({ children, params }) {
       <body>
         <Header header={globalData?.header} lang={lang} direction={direction} />
         <main className="min-h-screen">{children}</main>
-        {/* <Footer footer={globalData?.footer} lang={lang} /> */}
+        <Footer footer={globalData?.footer} lang={lang} />
       </body>
     </html>
   );

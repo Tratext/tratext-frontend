@@ -68,7 +68,7 @@ export const fetchAllPages = async () => {
 export const fetchGlobalData = async (locale = "en") => {
   try {
     const { data } = await axiosInstance.get(
-      `/global?locale=${locale}&status=published&pLevel`,
+      `/global?locale=${locale}&status=published&pLevel=8`,
       {
         headers: {
           next: {
