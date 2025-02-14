@@ -77,24 +77,14 @@ export const fetchGlobalData = async (locale = "en") => {
         },
       }
     );
-
-    if (!data?.data) {
-      console.error(`Invalid global data structure for locale ${locale}`);
-      return {
-        header: {},
-        footer: {},
-        seo: {},
-      };
-    }
-
     return data.data;
   } catch (error) {
-    console.error(`Error fetching global data for locale ${locale}:`, error);
-    return {
-      header: {},
-      footer: {},
-      seo: {},
-    };
+    if (error.response && error.response.status === 404) {
+      redirect("/404");
+    } else {
+      console.error("Error fetching global data:", error);
+    }
+    throw error;
   }
 };
 
