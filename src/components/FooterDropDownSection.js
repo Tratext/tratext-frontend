@@ -33,13 +33,13 @@ function FooterDropDownSection({ links: { title, link } }) {
             className="flex flex-col gap-3 overflow-hidden px-2"
           >
             {link.map((l, i) => (
-              <Link
+              <a
                 href={l.url}
                 key={i}
                 className="xl:text-[16px] sm:text-[14px] text-[16px] text-white/80"
               >
                 {l.text}
-              </Link>
+              </a>
             ))}
           </motion.div>
         )}

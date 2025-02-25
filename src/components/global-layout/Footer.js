@@ -106,13 +106,13 @@ function Footer({ footer }) {
                         {item.title}
                       </h3>
                       {item?.link?.map((link, j) => (
-                        <Link
+                        <a
                           href={link.url}
                           key={j}
                           className="xl:text-[16px] text-[14px] text-white/80"
                         >
                           {link.text}
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   ))}
