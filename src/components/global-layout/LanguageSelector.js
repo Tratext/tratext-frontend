@@ -10,6 +10,7 @@ function LanguageSelector() {
   const [locales, setLocales] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const navigator = usePathname();
 
@@ -20,6 +21,8 @@ function LanguageSelector() {
         setLocales(localesData);
       } catch (error) {
         console.error("Failed to fetch locales:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -45,52 +48,62 @@ function LanguageSelector() {
     locales.find((lang) => lang.code === selectedLanguage) || {};
 
   return (
-    <div
-      className="relative w-[100px] dropdown flex justify-center items-center cursor-pointer"
-      onClick={toggleDropdown}
-    >
-      <div>
+    <>
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <div className="w-8 h-8 border-4 border-t-4 border-green-500 rounded-full animate-spin"></div>
+        </div>
+      ) : (
         <div
-          className="py-2 flex items-center justify-between cursor-pointer"
+          className="relative w-[100px] dropdown flex justify-center items-center cursor-pointer"
           onClick={toggleDropdown}
         >
-          {selectedLanguageObj?.code && (
-            <>
-              <Image
-                src={`/flags/${selectedLanguageObj.code}.png`} // Adjust flag paths as needed
-                alt={selectedLanguageObj.name}
-                width={18}
-                height={18}
-              />
-              <span className="ml-2 font-light text-[14px]">
-                {selectedLanguageObj.name || selectedLanguageObj.code}
-              </span>
-            </>
-          )}
-        </div>
+          <div>
+            <div
+              className="py-2 flex items-center justify-between cursor-pointer"
+              onClick={toggleDropdown}
+            >
+              {selectedLanguageObj?.code && (
+                <>
+                  <Image
+                    src={`/flags/${selectedLanguageObj.code}.png`}
+                    alt={selectedLanguageObj.name}
+                    width={18}
+                    height={18}
+                  />
+                  <span className="ml-2 font-light text-[14px]">
+                    {selectedLanguageObj.name || selectedLanguageObj.code}
+                  </span>
+                </>
+              )}
+            </div>
 
-        {isOpen && (
-          <div className="absolute mt-2 w-full bg-white z-10 shadow-md shadow-gray-300">
-            {locales.map((lang) => (
-              <div
-                key={lang.code}
-                className="flex items-center p-2 cursor-pointer hover:bg-gray-100"
-                onClick={() => changeLanguage(lang.code)} // Update onClick handler
-              >
-                <Image
-                  src={`/flags/${lang.code}.png`} // Adjust flag paths as needed
-                  alt={lang.name}
-                  width={18}
-                  height={18}
-                />
-                <span className="ml-2 font-light text-[14px]">{lang.name}</span>
+            {isOpen && (
+              <div className="absolute mt-2 w-full bg-white z-10 shadow-md shadow-gray-300">
+                {locales.map((lang) => (
+                  <div
+                    key={lang.code}
+                    className="flex items-center p-2 cursor-pointer hover:bg-gray-100"
+                    onClick={() => changeLanguage(lang.code)}
+                  >
+                    <Image
+                      src={`/flags/${lang.code}.png`}
+                      alt={lang.name}
+                      width={18}
+                      height={18}
+                    />
+                    <span className="ml-2 font-light text-[14px]">
+                      {lang.name}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
-        )}
-      </div>
-      <IoIosArrowDown className="ml-2 text-[14px]" />
-    </div>
+          <IoIosArrowDown className="ml-2 text-[14px]" />
+        </div>
+      )}
+    </>
   );
 }
 

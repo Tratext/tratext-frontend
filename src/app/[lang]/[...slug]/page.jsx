@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const { slug, lang } =  await params || {};
+  const { slug, lang } = (await params) || {};
 
   if (!slug?.length || !lang) {
     console.warn("Missing slug or lang parameter.");
